@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Nave Espacial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="teclado.js"></script>
+    <script src="animacao.js"></script>
+    <script src="nave.js"></script>
+    <script src="tiro.js"></script>
+    <script src="inimigos.js"></script>
+    <script src="powerup.js"></script>
+    <script src="explosao.js"></script>
+    <script src="jogo.js"></script>
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas_jogo" width="800" height="600"></canvas>
+        <div id="info">
+            <div>Score: <span id="score">0</span></div>
+            <div>Vidas: <span id="lives">3</span></div>
+            <div>Nível: <span id="level">1</span></div>
+        </div>
+        <button id="pauseBtn">PAUSA</button>
+        <div id="pauseMenu">
+            <h1>PAUSA</h1>
+            <button onclick="jogo.togglePause()">Continuar</button>
+            <button onclick="jogo.reset()">Novo Jogo</button>
+        </div>
+        <div id="gameOverMenu">
+            <h1>GAME OVER</h1>
+            <div id="finalScore">Score: 0</div>
+            <button onclick="jogo.reset()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script>
+        var canvas = document.getElementById('canvas_jogo');
+        var context = canvas.getContext('2d');
+        var teclado = new Teclado(document);
+        var animacao = new Animacao(context, 800, 600);
+        var jogo = new Jogo(context, teclado, animacao, 800, 600);
+        
+        teclado.disparou(ESPACO, function() {
+            if (jogo.jogando && !jogo.pausado) {
+                jogo.atirar();
+            }
+        });
+
+        animacao.ligar();
+    </script>
+</body>
+</html>
