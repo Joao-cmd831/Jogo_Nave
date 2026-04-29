@@ -10,7 +10,7 @@ Criar um jogo básico praticando a lógica dos comandos nos personagens.
 - JavaScript
 
 # Como usar?
-Abra o arquivo na ferramenta usada e rode o projeto.
+Abra o arquivo na ferramenta visual studio code e rode o projeto.
 
 # Autor
 - João Pedro.
